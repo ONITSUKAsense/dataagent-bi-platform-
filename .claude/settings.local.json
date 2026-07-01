@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'init: DataAgent 智能 BI 报告平台 *)"
+    ]
+  }
+}

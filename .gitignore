@@ -1,0 +1,43 @@
+# Node
+node_modules/
+dist/
+*.local
+
+# Java
+target/
+*.class
+*.jar
+*.war
+*.log
+logs/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+*.log
+
+# Docker
+docker/data/
+docker/mysql/data/
+
+# Vector Store
+ai-service/vector_store/
