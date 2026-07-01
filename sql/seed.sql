@@ -65,7 +65,7 @@ INSERT INTO sys_permission (name, code, type, parent_id, sort) VALUES
 
 -- 默认管理员 (密码: admin123)
 INSERT INTO sys_user (username, password, nickname, email, role_id, status) VALUES
-('admin', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '管理员', 'admin@dataagent.com', 1, 1);
+('admin', '$2b$12$krdNUmVhJMrS5WwNRSno0OtHMfJSKds97ouaKNhsiLsAd6gzQ/4sS', '管理员', 'admin@dataagent.com', 1, 1);
 
 -- 分配管理员权限
 INSERT INTO sys_role_permission (role_id, permission_id)
