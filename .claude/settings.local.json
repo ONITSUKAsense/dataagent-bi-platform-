@@ -3,7 +3,20 @@
     "allow": [
       "Bash(git init *)",
       "Bash(git add *)",
-      "Bash(git commit -m 'init: DataAgent 智能 BI 报告平台 *)"
+      "Bash(git commit -m 'init: DataAgent 智能 BI 报告平台 *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(curl -s --connect-timeout 5 https://github.com)",
+      "Bash(ssh -T -o ConnectTimeout=5 git@github.com)",
+      "Read(//c/Users/詹荣基/**)",
+      "Bash(gh auth *)",
+      "Bash(findstr \"LISTEN\")",
+      "Bash(findstr \"7890 1080 1087 8080\")",
+      "Bash(gh repo *)",
+      "Bash(ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N \"\" -C \"dataagent-deploy\")",
+      "Bash(mkdir -p ~/.ssh)",
+      "Bash(ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_github -N \"\" -C \"dataagent-deploy\")",
+      "Bash(gh ssh-key *)"
     ]
   }
 }

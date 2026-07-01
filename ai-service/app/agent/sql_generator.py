@@ -1,6 +1,6 @@
 """Generate SQL from natural language using LLM."""
 from typing import Optional
-from app.utils.llm_client import call_qwen
+from app.utils.llm_client import call_llm
 from app.utils.logger import logger
 
 SYSTEM_PROMPT = """你是一个数据分析专家。请根据用户的问题和数据库表结构，生成对应的SQL查询语句。
@@ -27,7 +27,7 @@ def generate_sql(question: str, table_schema: str, reference_docs: str = "") -> 
     prompt = '\n'.join(prompt_parts)
     logger.info(f"Generating SQL for question: {question}")
 
-    sql = call_qwen(prompt, system_prompt=SYSTEM_PROMPT, temperature=0.1).strip()
+    sql = call_llm(prompt, system_prompt=SYSTEM_PROMPT, temperature=0.1).strip()
 
     # Clean up markdown code blocks if present
     if sql.startswith("```"):

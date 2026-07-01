@@ -1,7 +1,7 @@
 """Generate ECharts configuration from query results using LLM."""
 import json
 from typing import Optional
-from app.utils.llm_client import call_qwen
+from app.utils.llm_client import call_llm
 from app.utils.logger import logger
 
 SYSTEM_PROMPT = """你是一个数据可视化专家。请根据用户的问题和查询数据，生成最合适的ECharts图表配置。
@@ -30,7 +30,7 @@ def generate_chart_config(question: str, data: list[dict]) -> tuple[Optional[str
     prompt = f"用户问题：{question}\n\n查询数据（JSON）：\n{json.dumps(data, ensure_ascii=False, indent=2)}"
     prompt += "\n\n请直接生成ECharts配置JSON："
 
-    result = call_qwen(prompt, system_prompt=SYSTEM_PROMPT, temperature=0.2).strip()
+    result = call_llm(prompt, system_prompt=SYSTEM_PROMPT, temperature=0.2).strip()
 
     # Clean up markdown code blocks
     if "```json" in result:

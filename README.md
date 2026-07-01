@@ -121,6 +121,60 @@ sql_history           — SQL 执行历史
 agent_log             — Agent 执行日志
 ```
 
+## LLM 与 OSS API 配置
+
+AI 对话功能需要配置大语言模型（LLM）API 才能正常工作。不配置时会自动使用 Mock 模式（返回示例数据，可用于体验界面）。
+
+### 方式一：阿里云通义千问（DashScope）
+
+```bash
+# 1. 访问 https://dashscope.aliyun.com/ 注册并获取 API Key
+# 2. 在 .env 中配置：
+QWEN_API_KEY=sk-你的API密钥
+QWEN_MODEL=qwen-turbo
+LLM_PROVIDER=qwen
+```
+
+支持模型：`qwen-turbo`、`qwen-plus`、`qwen-max`（免费额度足够开发测试）
+
+### 方式二：DeepSeek
+
+```bash
+# 1. 访问 https://platform.deepseek.com/ 注册并获取 API Key
+# 2. 在 .env 中配置：
+DEEPSEEK_API_KEY=sk-你的API密钥
+DEEPSEEK_MODEL=deepseek-chat
+LLM_PROVIDER=deepseek
+```
+
+DeepSeek 性价比高，`deepseek-chat` 模型输入 1元/百万 tokens，输出 2元/百万 tokens。
+
+### 对象存储 OSS（可选）
+
+默认文件存储在本地磁盘。如需接入阿里云 OSS：
+
+```bash
+OSS_ENABLED=true
+OSS_ENDPOINT=https://oss-cn-hangzhou.aliyuncs.com
+OSS_ACCESS_KEY_ID=你的AccessKey
+OSS_ACCESS_KEY_SECRET=你的AccessSecret
+OSS_BUCKET_NAME=dataagent-files
+```
+
+### 完整配置示例
+
+```bash
+# 选择 DeepSeek
+LLM_PROVIDER=deepseek
+DEEPSEEK_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+DEEPSEEK_MODEL=deepseek-chat
+
+# 或选择通义千问
+# LLM_PROVIDER=qwen
+# QWEN_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+# QWEN_MODEL=qwen-turbo
+```
+
 ## 快速启动
 
 ### 方式一：Docker 一键部署（推荐）
@@ -132,7 +186,7 @@ cd dataagent-bi-platform-
 
 # 2. 配置环境变量
 cp .env.example .env
-# 编辑 .env，可按需修改 MySQL 密码、JWT 密钥等
+# 编辑 .env，填写 LLM API Key（可选，不填使用 Mock 模式）
 
 # 3. 启动所有服务
 cd docker

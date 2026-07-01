@@ -1,6 +1,6 @@
 """Generate markdown report from analysis results using LLM."""
 from typing import Optional
-from app.utils.llm_client import call_qwen
+from app.utils.llm_client import call_llm
 from app.utils.logger import logger
 
 SYSTEM_PROMPT = """你是一个数据分析报告专家。请根据分析结果生成专业的数据分析报告。
@@ -42,7 +42,7 @@ def generate_report(question: str, sql: str, data: list[dict], chart_type: Optio
 
 请生成Markdown格式的分析报告。"""
 
-        report = call_qwen(prompt, system_prompt=SYSTEM_PROMPT, temperature=0.3).strip()
+        report = call_llm(prompt, system_prompt=SYSTEM_PROMPT, temperature=0.3).strip()
 
         if report.startswith("```"):
             report = report.split('\n', 1)[-1] if '\n' in report else report.replace("```markdown", "").replace("```", "")
